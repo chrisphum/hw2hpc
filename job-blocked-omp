@@ -62,6 +62,7 @@ for N in 128 512 2048 # loop over problem sizes
 # if doing the blocked version, be sure to add -B $B to the following two lines
          echo srun -n 1 likwid-perfctr $MARKER_FLAG -g $PERF_COUNTER_GROUP -C N:0-$maxcore ./benchmark-blocked-omp -N $N -B $B
          srun -n 1 likwid-perfctr $MARKER_FLAG -g $PERF_COUNTER_GROUP -C N:0-$maxcore ./benchmark-blocked-omp -N $N -B $B
+         srun -n 1 likwid-perfctr $MARKER_FLAG -g FLOPS_DP -C N:0-$maxcore ./benchmark-blocked-omp -N $N -B $B
 
          done # iterate over concurrency level
   done # iterate over block size, uncomment me if doing a loop over blocks
